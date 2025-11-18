@@ -1,0 +1,21 @@
+{
+  "short_name": "Viral Tweets",
+  "name": "Viral Tweet Generator",
+  "description": "An AI-powered assistant to help you craft viral tweets and threads.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#be123c",
+  "background_color": "#18181b"
+}
