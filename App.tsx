@@ -1,4 +1,3 @@
-// Fix: Add a triple-slash directive to include Vite's client types, which defines `import.meta.env`.
 /// <reference types="vite/client" />
 
 import React, { useState } from 'react';
@@ -21,7 +20,7 @@ import Analytics from './components/Analytics';
 type Page = 'home' | 'about' | 'terms' | 'contact' | 'history';
 
 const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
-const openaiInitializationError = (!openaiApiKey || openaiApiKey.startsWith('sk-proj-')) 
+const openaiInitializationError = !openaiApiKey
   ? 'OpenAI API key is missing. Please set VITE_OPENAI_API_KEY to run the application.' 
   : null;
 

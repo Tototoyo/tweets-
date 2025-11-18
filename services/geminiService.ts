@@ -1,4 +1,3 @@
-// Fix: Add a triple-slash directive to include Vite's client types, which defines `import.meta.env`.
 /// <reference types="vite/client" />
 
 import OpenAI from "openai";
@@ -43,7 +42,9 @@ const callOpenAI = async (userPrompt: string, responseSchema: any): Promise<any>
         temperature: 0.7,
     });
 
-    const content = response.choices[0].message.tool_calls?.[0].function.arguments;
+    // Fix: Cast tool_calls to `any` to safely access `function.arguments`.
+    // This is a workaround for potential type definition discrepancies in the OpenAI library.
+    const content = (response.choices[0].message.tool_calls?.[0] as any)?.function.arguments;
 
     if (!content) {
         throw new Error("Received an empty response from the AI.");
