@@ -1,3 +1,6 @@
+// Fix: Add a triple-slash directive to include Vite's client types, which defines `import.meta.env`.
+/// <reference types="vite/client" />
+
 import React, { useEffect, useRef, useState } from 'react';
 
 declare global {

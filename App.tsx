@@ -1,3 +1,6 @@
+// Fix: Add a triple-slash directive to include Vite's client types, which defines `import.meta.env`.
+/// <reference types="vite/client" />
+
 import React, { useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { FeaturesSection } from './components/FeaturesSection';
@@ -16,6 +19,12 @@ import { HistoryPage } from './components/HistoryPage';
 import Analytics from './components/Analytics';
 
 type Page = 'home' | 'about' | 'terms' | 'contact' | 'history';
+
+const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
+const openaiInitializationError = (!openaiApiKey || openaiApiKey.startsWith('sk-proj-')) 
+  ? 'OpenAI API key is missing. Please set VITE_OPENAI_API_KEY to run the application.' 
+  : null;
+
 
 const App: React.FC = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -72,6 +81,11 @@ const App: React.FC = () => {
         {supabaseInitializationError && (
           <div className="bg-red-800 text-white p-3 text-center font-semibold text-sm">
             {supabaseInitializationError}
+          </div>
+        )}
+        {openaiInitializationError && (
+          <div className="bg-red-800 text-white p-3 text-center font-semibold text-sm">
+            {openaiInitializationError}
           </div>
         )}
         {/* Background decorative gradients */}
